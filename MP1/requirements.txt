@@ -1,0 +1,5 @@
+scipy==0.19.0
+fix_yahoo_finance==0.0.19
+matplotlib==2.0.2
+numpy==1.12.1
+pandas_datareader==0.5.0

@@ -11,7 +11,8 @@ Project 1:
 1.	Write a python program that prompts the user to enter any valid stock symbol available in Google Finance, Yahoo Finance, Quandl, CityFALCON, or another similar source for NYSE & NASDAQ. Ensure proper error handling for wrong user inputs..
 2.	Download data for last 1 month for user entered ticker from Google Finance, Yahoo Finance, Quandl, CityFALCON, or another similar source
 3.	Using Interpolation techniques, fit a quadratic line through the data points and plot the same
-4.	Choose a quadratic equation of your choice and using SciPy leastsq() optimization method calculate the best fit line with respect to the downloaded data 5. Plot the best fit line and the actual data points together with error bars.
+4.	Choose a quadratic equation of your choice and using SciPy leastsq() optimization method calculate the best fit line with respect to the downloaded data
+5.  Plot the best fit line and the actual data points together with error bars.
 """
 # Some Metadata about the script
 __author__ = 'Osama Iqbal (iqbal.osama@icloud.com)'
@@ -26,6 +27,7 @@ import warnings  # For removing Deprication Warning w.r.t. Yahoo Finance Fix
 import datetime  # For setting correct dates from today up to a year in the past to get data from YF
 import numpy as np  # For numerical operations
 import scipy.interpolate  # For fitting quadratic curve
+import scipy.optimize  # For Optimization Problems
 import pylab  # For plotting the graphs
 
 with warnings.catch_warnings():
@@ -68,18 +70,48 @@ def get_data_from_yahoo_finance(stock_ticker):
         return data
 
 
-def quadratic_interpolation_with_plot(x_array_dim, y_array_dim, x_label):
+def quadratic_interpolation_with_plot(x_array_dim, x_label):
     """
     Perform Quadratic Interpolation with plotting of the graph
-    :param x_array: The x array value for the interpolation
-    :param y_array: The y array value for the interpolation
-    :return:
+    :param x_array_dim: The x array value for the interpolation
+    :param x_label: The X axis label value
+    :return: None
     """
-    interp = scipy.interpolate.interp1d(x_array_dim, y_array_dim, kind='quadratic')
-    pylab.plot(x_array_dim, y_array_dim, 'o', label='Actual Data Values (%s)' % x_label)
-    pylab.plot(x_array_dim, interp(x_array_dim), label='Quadratic Fit (%s)' % x_label)
+    granular_time_step = np.linspace(0, 20, 100)
+    time_step = np.arange(0, len(x_array_dim))
+    interpreted = scipy.interpolate.interp1d(time_step, x_array_dim, kind='quadratic')
+    y1 = interpreted(granular_time_step)
+    pylab.plot(x_array_dim, 'o', label='Actual Data Values (%s)' % x_label)
+    pylab.plot(granular_time_step, y1, label='Quadratic Fit (%s)' % x_label)
     pylab.legend()
     pylab.xlabel(x_label)
+    pylab.show()
+
+
+def fitfunc(p, t):
+    """This is the equation"""
+    return p[0] * t ** 2 + p[1] * t
+
+
+def errfunc(p, t, y):
+    return fitfunc(p, t) - y
+
+
+def best_fit_with_plot(close_price):
+    """
+    Plots best fitting quadratic equation
+    :param close_price: The array to fit
+    :return: None
+    """
+    x_data = np.arange(1, len(close_price) + 1)
+    y_data = close_price
+
+    guess = np.array([close_price.max(), close_price.min()])
+    output, preds = scipy.optimize.leastsq(errfunc, guess, args=(x_data, y_data))
+    y_error = fitfunc(output, x_data) - y_data  # residuals
+    pylab.errorbar(x_data, y_data, yerr=y_error, fmt='ro', label="Actual stock price")
+    pylab.plot(fitfunc(output, x_data), 'b--', label="Best Fit - Quadratic Function")
+    pylab.legend(loc='best')
     pylab.show()
 
 
@@ -107,15 +139,13 @@ def main():
         # ===== Step 3: Fit a quadratic line =====
         # Convert pandas DataFrame to Numpy Array, and drop the 'Volume' column
         x_array = np.array(stock_data)[:, :4]
-        x_array = x_array.mean(axis=1)
-        # Get the y part of the function, that is y = f(x)
-        y_array = x_array ** 2  # Quadratic Function to fit
+        # Use only the close prices of the stocks
+        x_close = x_array[:, 3]
         # Interpolate and plot the result
-        quadratic_interpolation_with_plot(x_array, y_array, 'Mean Values')
+        quadratic_interpolation_with_plot(x_close, 'Close Values')
 
-        # ===== Step 4: Fit a quadratic line =====
-
-
+        # ===== Step 4 and 5: Calculate Best Fit =====
+        best_fit_with_plot(x_close)
 
     except BaseException, e:
         # Casting a wide net to catch all exceptions
