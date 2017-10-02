@@ -27,7 +27,6 @@ import pandas as pd  # For calculating coefficient of correlation
 import warnings  # For removing Deprecation Warning w.r.t. Yahoo Finance Fix
 import datetime  # For setting correct dates from today up to a year in the past to get data from YF
 import time
-import numpy as np  # For numerical operations
 import seaborn as sns  # For plotting the graphs
 
 with warnings.catch_warnings():
