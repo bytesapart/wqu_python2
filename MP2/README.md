@@ -31,3 +31,6 @@ machine.
 and plot them as a heatmap, just to give a better picture to the end user. Therefore, this last step can
 be thought of a birds-eye view, while the two-market comparision phase can be considered as an isolation
 view to get better sense of correlation between the indices
+
+7. Sometimes, Yahoo Finance bugs out, and hence, cannot find the data for the Ticker/Index. Please re-run the
+program again to get the data. This is a known issue
