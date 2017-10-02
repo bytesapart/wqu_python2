@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a395bbc-f0b4-4c3e-b3e7-b8f7bf5b8ca0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Osama_Iqbal-Mini_Project_2-October_02_2017.zip" afterPath="$PROJECT_DIR$/Osama_Iqbal-Mini_Project_2-October_02_2017.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MP2/requirements.txt" afterPath="$PROJECT_DIR$/MP2/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,8 +67,8 @@
       <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MP2/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="92">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -290,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506956949807</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update MP2 requirements.txt">
+      <created>1506957127906</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1506957127906</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -331,7 +338,8 @@
     <MESSAGE value="Add PDF for project report for Mini Project 2" />
     <MESSAGE value="Update Readme for Mini Project 2" />
     <MESSAGE value="Remove unwanted import&#10;Add zip file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unwanted import&#10;Add zip file" />
+    <MESSAGE value="Update MP2 requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update MP2 requirements.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -651,8 +659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MP2/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="92">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
