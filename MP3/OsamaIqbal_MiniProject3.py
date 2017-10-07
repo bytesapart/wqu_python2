@@ -81,7 +81,7 @@ def main():
         amino_dataframe = pd.DataFrame.from_dict(amino_dict, orient='index').transpose()
         print(amino_dataframe.head())
         print(amino_dataframe.tail())
-        amino_dataframe.to_csv()
+        amino_dataframe.to_csv(os.path.join(os.getcwd(), 'amino_dataframe.csv'), index=False)
 
         # ===== Step 3: Output Bar Chart for Median of Zinc Content =====
         # Initialize an empty dictionary of unique 'group' elements, with key as group and value as a list
