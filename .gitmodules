@@ -1,0 +1,3 @@
+[submodule "MP3/nutrient-db"]
+	path = MP3/nutrient-db
+	url = https://github.com/schirinos/nutrient-db
